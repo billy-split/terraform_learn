@@ -18,3 +18,16 @@ resource "aws_subnet" "dev-subnet-1" {
     cidr_block = "10.0.10.0/24"
     availability_zone = "us-east-2a"
 }
+
+# 3. Consultamos los datos de la vpc
+data "aws_vpc" "existing_vpc" {
+    default = true
+}
+
+# 4. Aqui agregamos una segunda subnet dentro de la vpc
+# Tenemos que cambiar el cidr_block
+resource "aws_subnet" "dev-subnet-2" {
+    vpc_id = data.aws_vpc.existing_vpc.id
+    cidr_block = "172.31.48.0/20"
+    availability_zone = "us-east-2a"
+}
