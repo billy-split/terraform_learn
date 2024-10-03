@@ -5,7 +5,7 @@ provider "aws" {
     secret_key = ""
 }
 
-# Define a resources (VPC, Subnet, instances ... )
+# Define a resources (VPC, Subnet, instances ...)
 
 # 1. VPC
 resource "aws_vpc" "dev-vpc" {
